@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import * as React from "react";
-import { Footer, Header } from "../atoms";
+import { Footer } from "../atoms";
+import { Header } from "../molecules";
 
 export default class MainPage extends React.Component {
   public render() {

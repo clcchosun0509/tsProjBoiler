@@ -1,7 +1,4 @@
-import Footer from './Footer';
-import Header from './Header';
+import Footer from "./Footer";
+import DropDownMenuItem from "./DropDownMenuItem";
 
-export {
-  Footer,
-  Header
-};
+export { Footer, DropDownMenuItem };
