@@ -199,6 +199,7 @@ module.exports = {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
+                        modules: true,
                       },
                     },
                     {
@@ -278,7 +279,16 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [
+              /\.(js|jsx|mjs)$/, 
+              /\.html$/, 
+              /\.json$/,
+              /\.bmp$/,
+              /\.gif$/,
+              /\.jpe?g$/,
+              /\.png$/,
+              /\.scss$/,
+            ],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
