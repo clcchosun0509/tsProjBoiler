@@ -1,13 +1,15 @@
+import {Layout} from 'antd';
 import * as React from 'react'
-import Header from '../atoms/Header';
+import {Footer, Header} from '../atoms';
 
 export default class MainPage extends React.Component {
   public render() {
     return (
-      <div>
-        메인 페이지
+      <Layout>
         <Header />
-      </div>
+        메인 페이지
+        <Footer />
+      </Layout>
     )
   }
 }
