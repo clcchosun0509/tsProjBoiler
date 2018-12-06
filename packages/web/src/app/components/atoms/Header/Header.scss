@@ -1,7 +1,13 @@
-@import 'utils';
+@import "utils";
 
 .Header {
-  &__main {
-    color: purple;
+  display: flex;
+  &__logo-wrapper {
+    display: inline-block;
+    height: 64px;
+  }
+
+  &__logo {
+    height: 100%;
   }
 }

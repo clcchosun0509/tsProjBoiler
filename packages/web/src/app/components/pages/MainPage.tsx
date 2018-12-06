@@ -1,6 +1,6 @@
-import {Layout} from 'antd';
-import * as React from 'react'
-import {Footer, Header} from '../atoms';
+import { Layout } from "antd";
+import * as React from "react";
+import { Footer, Header } from "../atoms";
 
 export default class MainPage extends React.Component {
   public render() {
@@ -10,6 +10,6 @@ export default class MainPage extends React.Component {
         메인 페이지
         <Footer />
       </Layout>
-    )
+    );
   }
 }
