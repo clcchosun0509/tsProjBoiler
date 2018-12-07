@@ -2,12 +2,22 @@
 
 .Header {
   display: flex;
-  &__logo-wrapper {
+  justify-content: space-between;
+  &__left-side {
+    display: inline-block;
+    height: 64px;
+  }
+
+  &__right-side {
     display: inline-block;
     height: 64px;
   }
 
   &__logo {
     height: 100%;
+  }
+
+  &__menu {
+    display: inline-block;
   }
 }

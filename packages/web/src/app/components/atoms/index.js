@@ -1,5 +1,5 @@
 import Footer from "./Footer";
-import DropDownMenuItem from "./DropDownMenuItem";
+import HeaderMenuItem from "./HeaderMenuItem";
 import Register from './Register';
 
-export { Footer, DropDownMenuItem, Register };
+export { Footer, HeaderMenuItem, Register };

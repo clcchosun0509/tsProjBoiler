@@ -1,34 +1,31 @@
-import { Layout, Menu, Dropdown } from "antd";
-import * as classNames from "classnames/bind";
-import * as React from "react";
-import styles from "./Header.scss";
-import headerLogoImage from "../../../../assets/images/header_logo.png";
-import { DropDownMenuItem } from "../../atoms";
+import { Layout, Menu } from 'antd';
+import * as classNames from 'classnames/bind';
+import * as React from 'react';
+import headerLogoImage from '../../../../assets/images/header_logo.png';
+import { HeaderMenuItem } from '../../atoms';
+import styles from './Header.scss';
 
 const cx = classNames.bind(styles);
 
 const Header = ({ ...rest }) => {
-  const menu = (
-    <Menu>
-      <DropDownMenuItem text="영어" link="/en" {...rest} />
-      <DropDownMenuItem text="일본어" link="/jp" {...rest} />
-      <DropDownMenuItem text="중국어" link="/cn" {...rest} />
-    </Menu>
-  );
   return (
-    <Layout.Header className={cx("Header")}>
-      <div className={cx("Header__logo-wrapper")}>
-        <img className={cx("Header__logo")} src={headerLogoImage} alt="번&공" />
+    <Layout.Header className={cx('Header')}>
+      <div className={cx('Header__left-side')}>
+        <img className={cx('Header__logo')} src={headerLogoImage} alt="번&공" />
+        <Menu className={cx('Header__menu')} theme="dark" mode="horizontal">
+          <Menu.SubMenu title="언어 선택">
+            <HeaderMenuItem text="영어" link="/en" {...rest} />
+            <HeaderMenuItem text="일본어" link="/jp" {...rest} />
+            <HeaderMenuItem text="중국어" link="/cn" {...rest} />
+          </Menu.SubMenu>
+          <Menu.Item key="community">커뮤니티</Menu.Item>
+        </Menu>
       </div>
-      <Menu theme="dark" mode="horizontal">
-        <Menu.Item key="1">
-          <Dropdown overlay={menu}>
-            <a href="#">언어 선택</a>
-          </Dropdown>
-        </Menu.Item>
-        <Menu.Item key="2">nav 2</Menu.Item>
-        <Menu.Item key="3">nav 3</Menu.Item>
-      </Menu>
+      <div className={cx('Header__right-side')}>
+        <Menu className={cx('Header__menu')} theme="dark" mode="horizontal">
+          <Menu.Item key="login">로그인</Menu.Item>
+        </Menu>
+      </div>
     </Layout.Header>
   );
 };
