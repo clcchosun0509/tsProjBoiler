@@ -878,8 +878,8 @@ aws-lambda@^0.1.2:
     dotenv "^0.4.0"
 
 aws-sdk@^*:
-  version "2.371.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.371.0.tgz#e069f7478be03d36a4812298f4e87dbcab6d81d7"
+  version "2.372.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.372.0.tgz#266bf6d0fdd4dbe0a43604a30749b2c4648d01a8"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -6001,8 +6001,8 @@ minipass@^2.2.1, minipass@^2.3.4:
     yallist "^3.0.0"
 
 minizlib@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.1.1.tgz#6734acc045a46e61d596a43bb9d9cd326e19cc42"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.2.0.tgz#59517387478fd98d8017ed0299c6cb16cbd12da3"
   dependencies:
     minipass "^2.2.1"
 
@@ -7303,8 +7303,8 @@ range-parser@^1.0.3, range-parser@~1.2.0:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
 rate-limit-redis@^1.4.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/rate-limit-redis/-/rate-limit-redis-1.5.0.tgz#3e6183b9a643437998cc3730232edd35897dde28"
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/rate-limit-redis/-/rate-limit-redis-1.6.0.tgz#fbd144ae9a66bef09ebc780752f3924f0ee2dcfe"
   dependencies:
     defaults "^1.0.3"
     redis "^2.6.0-2"
