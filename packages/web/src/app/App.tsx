@@ -3,6 +3,7 @@ import * as React from 'react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 
 import MainPage from './components/pages/MainPage';
+import RegisterPage from './components/pages/RegisterPage';
 
 @inject()
 @observer
@@ -12,6 +13,7 @@ class App extends React.Component {
       <HashRouter>
         <Switch>
           <Route exact path={'/'} component={MainPage}/>
+          <Route exact path={'/register'} component={RegisterPage} />
         </Switch>
       </HashRouter>
     );
