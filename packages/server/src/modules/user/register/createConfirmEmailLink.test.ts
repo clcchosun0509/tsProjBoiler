@@ -16,7 +16,7 @@ let conn: Connection;
 beforeAll(async () => {
   conn = await createTestConn();
   const user = await User.create({
-    email: faker.internet.email(),
+    userId: faker.internet.email(),
     password: faker.internet.password()
   }).save();
   userId = user.id;

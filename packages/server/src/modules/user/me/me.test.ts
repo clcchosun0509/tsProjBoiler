@@ -8,13 +8,13 @@ import { createTestConn } from "../../../testUtils/createTestConn";
 let userId: string;
 let conn: Connection;
 faker.seed(Date.now() + 3);
-const email = faker.internet.email();
+const fakerUserId = faker.internet.email();
 const password = faker.internet.password();
 
 beforeAll(async () => {
   conn = await createTestConn();
   const user = await User.create({
-    email,
+    userId: fakerUserId,
     password,
     confirmed: true
   }).save();
@@ -34,13 +34,13 @@ describe("me", () => {
 
   test("get current user", async () => {
     const client = new TestClient(process.env.TEST_HOST as string);
-    await client.login(email, password);
+    await client.login(fakerUserId, password);
     const response = await client.me();
 
     expect(response.data).toEqual({
       me: {
         id: userId,
-        email
+        userId: fakerUserId
       }
     });
   });

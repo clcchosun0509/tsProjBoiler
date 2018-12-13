@@ -16,13 +16,13 @@ export class TestClient {
     };
   }
 
-  async register(email: string, password: string) {
+  async register(userId: string, password: string) {
     return rp.post(this.url, {
       ...this.options,
       body: {
         query: `
           mutation {
-            register(email: "${email}", password: "${password}") {
+            register(userId: "${userId}", password: "${password}") {
               path
               message
             }
@@ -77,13 +77,13 @@ export class TestClient {
     });
   }
 
-  async login(email: string, password: string) {
+  async login(userId: string, password: string) {
     return rp.post(this.url, {
       ...this.options,
       body: {
         query: `
         mutation {
-          login(email: "${email}", password: "${password}") {
+          login(userId: "${userId}", password: "${password}") {
             path
             message
           }

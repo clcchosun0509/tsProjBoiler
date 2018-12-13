@@ -1,8 +1,8 @@
+import { validUserSchema } from '@bng/common';
 import { Button, Form, Input } from 'antd';
 import * as classNames from 'classnames/bind';
 import { FormikErrors, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
-import * as yup from 'yup';
 import styles from './Register.scss';
 
 const cx = classNames.bind(styles);
@@ -38,21 +38,6 @@ class Register extends React.Component<FormikProps<IFormValues> & IProps> {
   }
 }
 
-const userIdNotLongEnough = 'userId must be at least 3 characters';
-const passwordNotLongEnough = 'password must be at least 3 characters';
-const validationSchema = yup.object().shape({
-  password: yup
-    .string()
-    .min(3, passwordNotLongEnough)
-    .max(255)
-    .required(),
-  userId: yup
-    .string()
-    .min(3, userIdNotLongEnough)
-    .max(255)
-    .required()
-});
-
 export default withFormik<IProps, IFormValues>({
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
@@ -64,5 +49,5 @@ export default withFormik<IProps, IFormValues>({
     password: '',
     userId: ''
   }),
-  validationSchema
+  validationSchema: validUserSchema
 })(Register);

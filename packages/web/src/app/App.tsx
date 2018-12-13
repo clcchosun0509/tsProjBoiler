@@ -12,8 +12,8 @@ class App extends React.Component {
     return (
       <HashRouter>
         <Switch>
-          <Route exact path={'/'} component={MainPage}/>
-          <Route exact path={'/register'} component={RegisterPage} />
+          <Route exact={true} path={'/'} component={MainPage}/>
+          <Route exact={true} path={'/register'} component={RegisterPage} />
         </Switch>
       </HashRouter>
     );

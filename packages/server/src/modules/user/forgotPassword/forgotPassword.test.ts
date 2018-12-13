@@ -14,19 +14,19 @@ import { createTestConn } from "../../../testUtils/createTestConn";
 let conn: Connection;
 export const redis = new Redis();
 faker.seed(Date.now() + 0);
-const email = faker.internet.email();
+const fakerUserId = faker.internet.email();
 const password = faker.internet.password();
 const newPassword = faker.internet.password();
 
-let userId: string;
+let userId2: string;
 beforeAll(async () => {
   conn = await createTestConn();
   const user = await User.create({
-    email,
+    userId: fakerUserId,
     password,
     confirmed: true
   }).save();
-  userId = user.id;
+  userId2 = user.id;
 });
 
 afterAll(async () => {
@@ -38,18 +38,18 @@ describe("forgot password", () => {
     const client = new TestClient(process.env.TEST_HOST as string);
 
     // lock account
-    await forgotPasswordLockAccount(userId, redis);
-    const url = await createForgotPasswordLink("", userId, redis);
+    await forgotPasswordLockAccount(userId2, redis);
+    const url = await createForgotPasswordLink("", userId2, redis);
 
     const parts = url.split("/");
     const key = parts[parts.length - 1];
 
     // make sure you can't login to locked account
-    expect(await client.login(email, password)).toEqual({
+    expect(await client.login(fakerUserId, password)).toEqual({
       data: {
         login: [
           {
-            path: "email",
+            path: "userId",
             message: forgotPasswordLockedError
           }
         ]
@@ -88,7 +88,7 @@ describe("forgot password", () => {
       }
     });
 
-    expect(await client.login(email, newPassword)).toEqual({
+    expect(await client.login(fakerUserId, newPassword)).toEqual({
       data: {
         login: null
       }

@@ -1,25 +1,13 @@
-import * as yup from "yup";
-
 import { ResolverMap } from "../../../types/graphql-utils";
 import { User } from "../../../entity/User";
 import { formatYupError } from "../../../utils/formatYupError";
 import {
-  duplicateEmail,
-  emailNotLongEnough,
-  invalidEmail
+  duplicateUserId
 } from "./errorMessages";
-import { registerPasswordValidation } from "../../../yupSchemas";
+import {validUserSchema} from '@bng/common';
 // import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 // import { sendEmail } from "../../utils/sendEmail";
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .min(3, emailNotLongEnough)
-    .max(255)
-    .email(invalidEmail),
-  password: registerPasswordValidation
-});
 
 export const resolvers: ResolverMap = {
   Mutation: {
@@ -29,29 +17,29 @@ export const resolvers: ResolverMap = {
       // { redis, url }
     ) => {
       try {
-        await schema.validate(args, { abortEarly: false });
+        await validUserSchema.validate(args, { abortEarly: false });
       } catch (err) {
         return formatYupError(err);
       }
 
-      const { email, password } = args;
+      const { userId, password } = args;
 
       const userAlreadyExists = await User.findOne({
-        where: { email },
+        where: { userId },
         select: ["id"]
       });
 
       if (userAlreadyExists) {
         return [
           {
-            path: "email",
-            message: duplicateEmail
+            path: "userId",
+            message: duplicateUserId
           }
         ];
       }
 
       const user = User.create({
-        email,
+        userId,
         password
       });
 

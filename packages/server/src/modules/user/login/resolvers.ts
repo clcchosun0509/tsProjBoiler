@@ -4,14 +4,14 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { User } from "../../../entity/User";
 import {
   invalidLogin,
-  confirmEmailError,
+  confirmUserIdError,
   forgotPasswordLockedError
 } from "./errorMessages";
 import { userSessionIdPrefix } from "../../../constants";
 
 const errorResponse = [
   {
-    path: "email",
+    path: "userId",
     message: invalidLogin
   }
 ];
@@ -20,10 +20,10 @@ export const resolvers: ResolverMap = {
   Mutation: {
     login: async (
       _,
-      { email, password }: GQL.ILoginOnMutationArguments,
+      { userId, password }: GQL.ILoginOnMutationArguments,
       { session, redis, req }
     ) => {
-      const user = await User.findOne({ where: { email } });
+      const user = await User.findOne({ where: { userId } });
 
       if (!user) {
         return errorResponse;
@@ -32,8 +32,8 @@ export const resolvers: ResolverMap = {
       if (!user.confirmed) {
         return [
           {
-            path: "email",
-            message: confirmEmailError
+            path: "userId",
+            message: confirmUserIdError
           }
         ];
       }
@@ -41,7 +41,7 @@ export const resolvers: ResolverMap = {
       if (user.forgotPasswordLocked) {
         return [
           {
-            path: "email",
+            path: "userId",
             message: forgotPasswordLockedError
           }
         ];
